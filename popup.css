@@ -1,0 +1,36 @@
+body {
+  padding: 20px;
+  text-align: center;
+  width: 200px;
+  font-size: 18px;
+}
+
+form {
+
+}
+form div {
+  margin-bottom: 1em;
+}
+form div:last-child {
+  margin-bottom: 0;
+}
+label {
+  text-align: left;
+  font-weight: bold;
+  margin: 0 0 .5em;
+  display: block;
+}
+input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 5px;
+}
+button {
+  border: 0;
+  background: #000;
+  color: #fff;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 20px;
+}

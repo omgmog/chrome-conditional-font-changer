@@ -1,0 +1,30 @@
+{
+    "manifest_version": 2,
+
+    "name": "Conditional Font Changer for Google Chrome",
+    "description": "Conditionally change fonts on a page, excluding changing certain fonts, e.g. icon fonts.",
+    "version": "1.0",
+    "content_scripts": [
+        {
+            "matches": ["*://*/*"],
+            "js": ["content_script.js"]
+        }
+    ],
+    "background": {
+        "scripts": ["background.js"]
+    },
+    "permissions": [
+       "tabs"
+    ],
+    "icons": {
+        "16": "icon16.png",
+        "48": "icon48.png",
+        "128": "icon128.png"
+    },
+    "page_action": {
+        "default_title": "Change fonts",
+        "default_icon": "icon_disabled.png",
+        "default_popup": "popup.html"
+    },
+    "content_security_policy": "script-src 'self' ; object-src 'self'"
+}
