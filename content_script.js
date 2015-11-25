@@ -9,7 +9,7 @@ chrome.runtime.onMessage.addListener(
       var newFont = request.extensionStorage.replacementFont;
 
       // Wrap the changer as a function
-      var conditionallyChangeFont = function () {
+      var changeFont = function () {
           // Here be dragons. Lots of DOM traversal
           var els = document.querySelectorAll('body *');
 
@@ -35,13 +35,13 @@ chrome.runtime.onMessage.addListener(
       var target = document.querySelectorAll('body')[0];
       var observer = new MutationObserver(function(changes) {
           changes.forEach(function(change) {
-              conditionallyChangeFont();
+              changeFont();
           });
       });
       observer.observe(target, { attributes: true, childList: true});
 
-      // And then call conditionallyChangeFont for good measure
-      conditionallyChangeFont();
+      // And then call changeFont for good measure
+      changeFont();
       updateIcon();
     }
   }
