@@ -3,30 +3,19 @@
 chrome.runtime.onMessage.addListener(
   function(request, sender, updateIcon) {
     if (request.extensionStorage) {
-      // Here you specify the fonts that you don't want to change, so as not to conflict with icon fonts, etc.
-      var excludedFonts = JSON.parse(request.extensionStorage.excludesList);
-      // Here you specify your new font for everything else
+      // Here you specify your new font
       var newFont = request.extensionStorage.replacementFont;
 
       // Wrap the changer as a function
-      var conditionallyChangeFont = function () {
+      var changeFont = function () {
           // Here be dragons. Lots of DOM traversal
-          var els = document.querySelectorAll('body *');
+          var els = document.querySelectorAll('body,body *');
 
           for (var i=0;i<els.length;i++) {
-              var elementFonts = window.getComputedStyle(els[i],null).getPropertyValue("font-family").split(',');
-              var changeFont = true;
-              for (var _i=0;_i<elementFonts.length;_i++) {
-                  for (var __i=0;__i<excludedFonts.length;__i++) {
-                      var elementFont = elementFonts[_i].toLowerCase().trim();
-                      var excludeFont = excludedFonts[__i].toLowerCase().trim();
-                      if ( elementFont === excludeFont ) {
-                          changeFont = false;
-                      }
-                  }
-              }
-              if (changeFont) {
-                  els[i].style.fontFamily = newFont;
+              var oldStyle = window.getComputedStyle(els[i]).fontFamily;
+              if ([0,1].indexOf(oldStyle.indexOf(newFont)) === -1) {
+                  // newFont is not the first font, add it
+                  els[i].style.fontFamily = "'" + newFont + "', " + window.getComputedStyle(els[i])['font-family'];
               }
           }
       };
@@ -35,13 +24,13 @@ chrome.runtime.onMessage.addListener(
       var target = document.querySelectorAll('body')[0];
       var observer = new MutationObserver(function(changes) {
           changes.forEach(function(change) {
-              conditionallyChangeFont();
+              changeFont();
           });
       });
       observer.observe(target, { attributes: true, childList: true});
 
-      // And then call conditionallyChangeFont for good measure
-      conditionallyChangeFont();
+      // And then call changeFont for good measure
+      changeFont();
       updateIcon();
     }
   }

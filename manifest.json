@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
 
-    "name": "Conditional Font Changer for Google Chrome",
-    "description": "Conditionally change fonts on a page, excluding changing certain fonts, e.g. icon fonts.",
+    "name": "Improved Font Changer for Google Chrome",
+    "description": "Change fonts on a page, leaving existing fonts as fallbacks, so that e.g. icon fonts still work.",
     "version": "1.0",
     "content_scripts": [
         {
