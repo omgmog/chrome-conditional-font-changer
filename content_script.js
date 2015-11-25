@@ -15,7 +15,8 @@ chrome.runtime.onMessage.addListener(
 
           for (var i=0;i<els.length;i++) {
               var oldStyle = window.getComputedStyle(els[i])['font-family'];
-              if (oldStyle.indexOf(newFont) === -1) {
+              if ([0,1].indexOf(oldStyle.indexOf(newFont)) === -1) {
+                  // newFont is not the first font, add it
                   els[i].style.fontFamily = "'" + newFont + "', " + window.getComputedStyle(els[i])['font-family'];
               }
           }
