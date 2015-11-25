@@ -9,7 +9,7 @@ chrome.runtime.onMessage.addListener(
       // Wrap the changer as a function
       var changeFont = function () {
           // Here be dragons. Lots of DOM traversal
-          var els = document.querySelectorAll('body *');
+          var els = document.querySelectorAll('body,body *');
 
           for (var i=0;i<els.length;i++) {
               var oldStyle = window.getComputedStyle(els[i]).fontFamily;
