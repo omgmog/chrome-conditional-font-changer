@@ -14,20 +14,8 @@ chrome.runtime.onMessage.addListener(
           var els = document.querySelectorAll('body *');
 
           for (var i=0;i<els.length;i++) {
-              var elementFonts = window.getComputedStyle(els[i],null).getPropertyValue("font-family").split(',');
-              var changeFont = true;
-              for (var _i=0;_i<elementFonts.length;_i++) {
-                  for (var __i=0;__i<excludedFonts.length;__i++) {
-                      var elementFont = elementFonts[_i].toLowerCase().trim();
-                      var excludeFont = excludedFonts[__i].toLowerCase().trim();
-                      if ( elementFont === excludeFont ) {
-                          changeFont = false;
-                      }
-                  }
-              }
-              if (changeFont) {
-                  els[i].style.fontFamily = newFont;
-              }
+              var oldStyle = window.getComputedStyle(els[i])['font-family'];
+              els[i].style.fontFamily = "'" + newFont + "', " + window.getComputedStyle(els[i])['font-family'];
           }
       };
 
