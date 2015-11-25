@@ -19,11 +19,7 @@ Before, regular fonts, regular icon fonts:
 
 ![](http://i.imgur.com/L1UmAWb.png)
 
-Open the popup from the address bar:
-
-![](http://i.imgur.com/sncALkQ.png)
-
-Change the font to something else:
+After, custom fonts, but the icons still work:
 
 ![](http://i.imgur.com/aogkwLt.png)
 
