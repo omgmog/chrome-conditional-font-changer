@@ -3,9 +3,7 @@
 chrome.runtime.onMessage.addListener(
   function(request, sender, updateIcon) {
     if (request.extensionStorage) {
-      // Here you specify the fonts that you don't want to change, so as not to conflict with icon fonts, etc.
-      var excludedFonts = JSON.parse(request.extensionStorage.excludesList);
-      // Here you specify your new font for everything else
+      // Here you specify your new font
       var newFont = request.extensionStorage.replacementFont;
 
       // Wrap the changer as a function
