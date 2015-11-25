@@ -1,4 +1,4 @@
-# Conditional Font Changer for Google Chrome
+# Improved Font Changer for Google Chrome
 
 ## What is this?
 
@@ -8,7 +8,7 @@ Seren uses an extension to change the fonts on a page to a more readable font, s
 
 One of the main points of contention in her talk was that icon fonts are also changed when she uses the extension, and so in many cases the icons lose their meaning.
 
-I've created this extension to allow the changing of fonts on all elements of a page, while respecting an exclusion list, so that icon fonts (or any other fonts) can remain unchanged.
+I've created this extension to allow the changing of fonts on all elements of a page, while respecting fallback to the existing fonts, so that icon fonts (or any fonts covering code points not included in the replacement font) can remain unchanged.
 
 
 ## Show us the goods!
@@ -29,13 +29,9 @@ Change the font to something else:
 
 ## And the technical details...
 
-The extension saves your "Fonts to exclude" and "Font to use" in `localStorage`, so the fonts you type in these boxes will get saved.
+The extension saves your "Font to use" in `localStorage`, so the font you type in the box will get saved.
 
 When you go to a site that you find hard to read, you simply click the little 'F' icon in the address bar, and then click the 'Change fonts' button.
-
-By default I've provided a couple of common icon font libraries in the "Fonts to exclude", these are:
-
-> "FontAwesome", "Icomoon", "Fontelico", "octicons", "Entypo", "Typicons", "Sitepoint"
 
 If you'd like to install this extension, do the following:
 
@@ -46,6 +42,8 @@ If you'd like to install this extension, do the following:
 
 ## Contributing
 
-I'm open to suggestions of ways to improve this, additional default icon font libraries to exclude, etc.
+Written by http://github.com/rjmunro, and https://github.com/omgmog
+
+I'm open to suggestions of ways to improve this.
 
 If you'd like to contribute, feel free to raise an issue or create a pull request.
