@@ -22,11 +22,17 @@ chrome.runtime.onMessage.addListener(
 
       // Set up the MutationObserver
       var target = document.querySelectorAll('body')[0];
-      var observer = new MutationObserver(function(changes) {
-          changes.forEach(function(change) {
-              changeFont();
-          });
-      });
+
+      var observer, callback;
+
+      callback = function(changes) {
+        changes.forEach(function(change) {
+          changeFont();
+        });
+      };
+
+      observer = new MutationObserver(callback);
+
       observer.observe(target, { attributes: true, childList: true});
 
       // And then call changeFont for good measure
