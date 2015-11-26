@@ -8,16 +8,16 @@ chrome.runtime.onMessage.addListener(
 
       // Wrap the changer as a function
       var changeFont = function () {
-          // Here be dragons. Lots of DOM traversal
-          var els = document.querySelectorAll('body,body *');
+        // Here be dragons. Lots of DOM traversal
+        var els = document.querySelectorAll('body, body *');
 
-          for (var i=0;i<els.length;i++) {
-              var oldStyle = window.getComputedStyle(els[i]).fontFamily;
-              if ([0,1].indexOf(oldStyle.indexOf(newFont)) === -1) {
-                  // newFont is not the first font, add it
-                  els[i].style.fontFamily = "'" + newFont + "', " + window.getComputedStyle(els[i])['font-family'];
-              }
+        for (var i=0;i<els.length;i++) {
+          var oldStyle = window.getComputedStyle(els[i]).fontFamily;
+          if ([0,1].indexOf(oldStyle.indexOf(newFont)) === -1) {
+            // newFont is not the first font, add it
+            els[i].style.fontFamily = "'" + newFont + "', " + oldStyle;
           }
+        }
       };
 
       // Set up the MutationObserver
